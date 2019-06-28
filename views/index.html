@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Duck! Duck! BOOM!!!</title>
+
+  <!-- metas -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://cdn.glitch.com/1d918182-078d-48c3-976a-a7da6dce1b3a%2Ffavicon.ico?v=1561760292428" type="image/x-icon">
+  
+  <!-- Bootstrp links -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-WTtvlZJeRyCiKUtbQ88X1x9uHmKi0eHCbQ8irbzqSLkE0DpAZuixT5yFvgX0CjIu" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/2f5f0520e6.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"
+    defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"
+    defer></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"
+    defer></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js" defer></script>
+
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!--     <script src="https://code.jquery.com/mobile/1.5.0-rc1/jquery.mobile-1.5.0-rc1.min.js"></script>
+ -->
+  <!-- import the webpage's javascript file -->
+  <script src="/client.js" defer></script>
+</head>
+
+<body class="disable-dbl-tap-zoom">
+  <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand">Duck Duck Boom</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" id="newGameLink">New Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="stopGameLink">Stop Game</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="leaderBoardLink" data-toggle="modal" data-target="#leaderDiv">Leader Board</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#optionsDiv">Options</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#helpDiv">Help</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">
+    <div id="pond" class="vertical-center">
+      <div class="vertically-centered-div innerDiv">
+        <div id="timerDiv" class="text-center">
+          <h4>Time Remaining: <span id="timer"></span></h4>
+        </div>
+        <div id="duckDiv"></div>
+        <div id="scoreDiv" class="text-center">
+          <h4>Level: <span id="currentLevel"></span> &nbsp;&nbsp;&nbsp;&nbsp;Score: <span id="myScore"></span></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="startOuterDiv" class="vertical-center">
+    <div class="text-center vertically-centered-div m14">
+      <button type="button" id="startGame" class="btn btn-primary btn-lg">Start Game!</button>
+    </div>
+  </div>
+  
+  <div id="newLeaderDiv" class="modal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="text-center">
+          <h5 class="text-center" style="margin-top: 20px;">New High Score</h5>
+        </div>
+        <div class="modal-body">
+          <p>You made it to the leader board! Enter a player name below, to be added to the leader board!</p>
+          <div class="form-group">
+            <label class="form-control-label" for="newName">Valid input</label>
+            <input type="text" class="form-control" id="newName" required>
+          </div>
+        </div>
+        <div class="text-center">
+          <button id="submitNewLeader" type="button" class="btn btn-primary" data-dismiss="modal"
+            style="margin-bottom: 15px;">Submit!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="leaderDiv" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="text-center">
+          <h5 class="text-center" style="margin-top: 20px;">Leader Board</h5>
+        </div>
+        <div class="modal-body">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th scope="col">Player</th>
+                <th scope="col">Score</th>
+              </tr>
+            </thead>
+            <tbody id="leaderBoard"></tbody>
+          </table>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin-bottom: 15px;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="optionsDiv" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Game Options</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bs-component">
+          <form>
+            <fieldset class="form-group">
+              <div class="form-group">
+                <label for="selectDegree">Select Rotation Degree:</label>
+                <select id="selectDegree" class="custom-select offWhenPlaying"
+                  onchange="deltaDegree=parseInt(this.value);">
+                  <option value="20">20&deg;</option>
+                  <option value="30" selected>30&deg;</option>
+                  <option value="45">45&deg;</option>
+                  <option value="90">90&deg;</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="startLevel">Select Start Level:</label>
+                <select id="startLevel" class="custom-select offWhenPlaying" onchange="level=parseInt(this.value);">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="playQuack">Enable Timer Sound:</label>
+                <select id="playQuack" class="custom-select" onchange="playQuackSound=(this.value=='on');">
+                  <option value="on" selected>Quack On</option>
+                  <option value="off">Quack Off</option>
+                </select>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="helpDiv" class="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Game Instructions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <p>Tap the 'Start Game' button on the main screen or the 'New Game' link at the top of the game screen.</p>
+          <p>A duck is automatically selected. Use the rotation buttons at the bottom of the screen to rotate the duck
+            upright.</p>
+          <p>Tap the 'Save Me' button at the bottom of the screen to rescue the upright duck from impending explosions.
+          </p>
+          <p>Each duck saved is worth the same amount of points as the level number. <br><small>Ex: Level 3 duck saved
+              is worth 3 points.</small></p>
+          <p>Good luck!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="display: none">
+    <audio id="audioElement">
+      <source id="audioSource" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+  </div>
+  
+  <div id="footer" class="text-center">
+    <div class="btn-group btn-block" role="group">
+      <button type="button" id="goLeft" class="gameButtons btn btn-primary btn-lg"><i class="fas fa-undo"></i></button>
+      <button type="button" id="saveMe" class="gameButtons btn btn-primary btn-lg">Save Me!</button>
+      <button type="button" id="goRight" class="gameButtons btn btn-primary btn-lg"><i class="fas fa-redo-alt"></i></button>
+    </div>
+    <button type="button" id="saveAll" class="cheatButton btn btn-primary btn-lg btn-block">Save All Ducks!</button>
+  </div>
+</body>
+
+</html>

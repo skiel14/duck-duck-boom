@@ -1,0 +1,96 @@
+html, body {
+  margin: 0; 
+  height: 100%; 
+  background: url("https://cdn.glitch.com/1d918182-078d-48c3-976a-a7da6dce1b3a%2Fcute-yellow-ducks-seamless-pattern-on-blue-vector-8473847.jpg?v=1561754292809");
+  background-position: center; /* Center the image */
+  background-repeat: repeat; /* Do not repeat the image */
+  background-size: 80% auto;
+}
+
+* {
+  overflow-x:hidden;
+  overflow-y:hidden
+}
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}
+
+#footer {
+  padding: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+button {
+  margin: 0 5px;
+}
+
+.cheatButton, .gameButtons {
+  margin: 0 auto;
+}
+
+.selectedParent {
+  background: #5bcaf5;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* https://stackoverflow.com/questions/22196587/how-to-center-align-vertically-the-container-in-bootstrap */
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+
+  -webkit-box-align : center;
+  -webkit-align-items : center;
+  -moz-box-align : center;
+  -ms-flex-align : center;
+  align-items : center;
+
+  width: 100%;
+
+  -webkit-box-pack : center;
+  -moz-box-pack : center;
+  -ms-flex-pack : center;
+  -webkit-justify-content : center;
+  justify-content : center;
+}
+
+table {
+  margin: 0 auto;
+}
+
+#leaderBoard td {
+  padding: 3px;
+}
+
+#scoreDiv, #timerDiv {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.3rem;
+  margin: 10px auto;
+}
+
+h4 {
+  margin: 10px;
+}
+
+#duckDiv td {
+  border-radius: 50%;
+  margin: 3px;
+}
+
+a {
+  color: white !important;
+}
